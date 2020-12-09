@@ -40,32 +40,44 @@ public class FuerzaArmada {
 	return 	batallas.get(string);
 	}
 
+	public Vehiculo getVehiculosAdd(Integer numero) {
+		for (Vehiculo i : convoy) {
+			if(i.getNumero().equals(numero)==true) {
+				return i;
+			}
+		}
+		return null;
+	}
 
 	public boolean enviarALaBatalla(String nombrebatalla, Integer nvehiculo) throws VehiculoIncompatible, VehiculoInexistente {
 		Batalla batalla = batallas.get(nombrebatalla);
-		Vehiculo vehiculo= batalla.getVehiculoBatalla(nvehiculo);
+		//Vehiculo vehiculo= batalla.getVehiculoBatalla(nvehiculo);
+		Vehiculo vehiculo = getVehiculosAdd(nvehiculo);
+		batalla.agregarVehiculo(vehiculo);
 		Boolean sepuede=false;
 		
 		
 		switch (batalla.getTipo()) {
 		case TERRESTRE:
-			if(vehiculo instanceof Terrestre) {
+			if(vehiculo instanceof Terrestre && vehiculo!=null) {
 				sepuede=true;
 				return sepuede;
 			}
-			else {
+			else  {
 				sepuede=false;
 				throw new VehiculoIncompatible("incompatible");
+				
 			 
 			}
 			
+			
 		case NAVAL:
-			if (vehiculo instanceof Acuatico) {
+			if (vehiculo instanceof Acuatico && vehiculo!=null) {
 				sepuede=true;
 				return sepuede;
 				
 			}
-			else {
+			else  {
 				sepuede=false;
 				throw new VehiculoIncompatible("incompatible");
 				
@@ -73,7 +85,7 @@ public class FuerzaArmada {
 			}
 			
 		case AEREA:
-			if (vehiculo instanceof Volador) {
+			if (vehiculo instanceof Volador && vehiculo!=null) {
 				sepuede=true;
 				return sepuede;
 				

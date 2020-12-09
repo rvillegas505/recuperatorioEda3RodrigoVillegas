@@ -35,19 +35,19 @@ public class Batalla {
 	}
 
 
-	public Integer agregarVehiculo(Vehiculo nuevo) {
+	public void agregarVehiculo(Vehiculo nuevo) {
 		vehiculosEnLaBatalla.add(nuevo);
-		return nuevo.getNumero();
+		
 	}
 	
 	public Vehiculo getVehiculoBatalla(Integer integer) {
-		Vehiculo aMostrar= new Vehiculo(1,"vehiculo");
+		//Vehiculo aMostrar= new Vehiculo(1,"vehiculo");
 		for(Vehiculo i: vehiculosEnLaBatalla) {
 			if(i.getNumero()==integer) 
 				return i;
-			 aMostrar = i;			
+			 			
 		}
-		return aMostrar;
+		return null;
 		
 	}
 	
