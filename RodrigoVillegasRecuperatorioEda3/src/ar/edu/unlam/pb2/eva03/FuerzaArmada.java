@@ -56,49 +56,56 @@ public class FuerzaArmada {
 		batalla.agregarVehiculo(vehiculo);
 		Boolean sepuede=false;
 		
+		if (vehiculo!=null) {   //COMENTARIO: Agregue esto para declararlo 
+								//para declarar que no es null antes del switch asi puedo tirar
+								// la otra excepcion luego, sino al tirar la de Inexistente me daba error.
+								//Ya se que esta una hora mas tarde agregado pero queria terminarlo porque sino 
+								//No iba a estar bien conmigo mismo. Mirar los otros que figuran en tiempo.
+								//Tambien saque los return para poder agregar break y quede mas prolijo, el return accionaba para que no ocurran errores como break
 		
-		switch (batalla.getTipo()) {
+			switch (batalla.getTipo()) {
 		case TERRESTRE:
 			if(vehiculo instanceof Terrestre && vehiculo!=null) {
 				sepuede=true;
-				return sepuede;
+				//return sepuede;
 			}
+		
 			else  {
-				sepuede=false;
-				throw new VehiculoIncompatible("incompatible");
+			sepuede=false;
 				
-			 
+			throw new VehiculoIncompatible("incompatible");	
+			//throw new VehiculoInexistente("incompatible");	
+	
 			}
+			break;
 			
-			
-		case NAVAL:
+			case NAVAL:
 			if (vehiculo instanceof Acuatico && vehiculo!=null) {
 				sepuede=true;
-				return sepuede;
-				
+				//return sepuede;			
 			}
 			else  {
 				sepuede=false;
 				throw new VehiculoIncompatible("incompatible");
-				
-				
-			}
+					
+			}		
 			
-		case AEREA:
+			break;
+			case AEREA:
 			if (vehiculo instanceof Volador && vehiculo!=null) {
 				sepuede=true;
-				return sepuede;
-				
+				//return sepuede;		
 			}
 			else {
 				sepuede=false;
-				throw new VehiculoIncompatible("incompatible");
-				
-				
+				throw new VehiculoIncompatible("incompatible");		
 			}
+			break;
 		}
-		
-		
+		}
+		else {
+			throw new VehiculoInexistente("incompatible");
+		}
 		
 		return sepuede;
 	} 
