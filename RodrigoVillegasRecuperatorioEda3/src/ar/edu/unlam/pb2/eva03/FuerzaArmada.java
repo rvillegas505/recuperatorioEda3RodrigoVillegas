@@ -59,8 +59,6 @@ public class FuerzaArmada {
 		if (vehiculo!=null) {   //COMENTARIO: Agregue esto para declararlo 
 								//para declarar que no es null antes del switch asi puedo tirar
 								// la otra excepcion luego, sino al tirar la de Inexistente me daba error.
-								//Ya se que esta una hora mas tarde agregado pero queria terminarlo porque sino 
-								//No iba a estar bien conmigo mismo. Mirar los otros que figuran en tiempo.
 								//Tambien saque los return para poder agregar break y quede mas prolijo, el return accionaba para que no ocurran errores como break
 		
 			switch (batalla.getTipo()) {
